@@ -47,7 +47,7 @@ module SendGridActionMailer
     private
 
     def client
-      @client = SendGrid::API.new(api_key: api_key, host: host).client
+      @client = SendGrid::API.new(api_key: api_key, host: settings[:host]).client
     end
 
     # type should be either :plain or :html
