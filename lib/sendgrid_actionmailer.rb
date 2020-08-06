@@ -11,7 +11,8 @@ module SendGridActionMailer
     include SendGrid
 
     DEFAULTS = {
-      raise_delivery_errors: false
+      raise_delivery_errors: false,
+      host: 'https://api.sendgrid.com'
     }.freeze
 
     attr_accessor :settings, :api_key
@@ -46,7 +47,7 @@ module SendGridActionMailer
     private
 
     def client
-      @client = SendGrid::API.new(api_key: api_key).client
+      @client = SendGrid::API.new(api_key: api_key, host: host).client
     end
 
     # type should be either :plain or :html
